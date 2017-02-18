@@ -10,27 +10,47 @@
     <meta name="apple-itunes-app" content="app-id=1128067951, app-argument=" />
     <meta name="google-play-app" content="app-id=org.coscup.ccip" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="manifest" href="" /> 
+    <link rel="manifest" href="" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
 
 </head>
 
-<body style="overflow:hidden;"> 
+<body style="overflow:hidden;">
     <div id="block">
         <img id="icon" src="img/stone.png" />
         <div id="background"></div>
         <h1>SITCON PASS</h1>
         <p>下載應用程式後，即可登入使用。</p>
         <div id="store">
-            <a href="#" ><img id="googleplay" src="img/google-play-badge.png" /></a>
-            <a href="#" ><img id="applestore" src="img/app-store-badge.svg" /></a>
+            <a href="#" id="goosrc" ><img id="googleplay" src="img/google-play-badge.png" /></a>
+            <a href="#" id="appsrc" ><img id="applestore" src="img/app-store-badge.svg" /></a>
         </div>
     </div>
     <div id="background-house-container">
         <img src="img/background.png">
         <img src="img/background-house.png" role="house">
     </div>
+    <script>
+        function parameters() {
+            return location.search.split('?').pop().split('&').map(p => {
+                var ps = p.split('=');
+                var o = {};
+                o[ps.shift()] = ps.join('=');
+                return o;
+            }).reduce((a, b) => {
+                var o = a;
+                for (var k in b) {
+                    o[k] = b[k];
+                }
+                return o;
+            });
+        }
+        window.onload = function (){
+            document.getElementById("appsrc").setAttribute("href","https://itunes.apple.com/app/id"+document.querySelector('meta[name="apple-itunes-app"]').content.split(',').shift().trim().split('=').pop().trim());
+            document.getElementById("goosrc").setAttribute("href","https://play.google.com/store/apps/details?id="+document.querySelector('meta[name="google-play-app"]').content.split('=').pop());
+        }
+    </script>
 </body>
 
 </html>
