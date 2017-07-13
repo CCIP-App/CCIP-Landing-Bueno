@@ -1,2 +1,2 @@
 # CCIP-Landing-Bueno
-CCIP Landing page for SITCON
+CCIP Landing page for Bueno
