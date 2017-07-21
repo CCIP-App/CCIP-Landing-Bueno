@@ -85,6 +85,9 @@ p{
     margin: 0px;
     /* margin-left: 0.5%; */
 }
+#goosrc.one{
+    width: 100%;
+}
 #appsrc{
     display: inline-block;
     vertical-align: top;
@@ -96,6 +99,17 @@ p{
     background-position: center;
     margin: 0px;
     /* margin-right: 0.5%; */
+}
+#appsrc.one{
+    width: 100%;
+}
+#iosLogin{
+    margin-top: 50px;
+    display: none;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    color: #3d983c;
 }
 
 .subpage--banner {
