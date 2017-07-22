@@ -73,6 +73,18 @@
                 appsrc.style.display = 'none';
                 goosrc.classList.add('one');
             }
+
+            var move = document.getElementById('background-house-container');
+            move.addEventListener('touchstart', function () {
+                var top = move.scrollTop
+                var totalScroll = move.scrollHeight
+                var currentScroll = top + move.offsetHeight
+                if (top === 0) {
+                    move.scrollTop = 1
+                } else if (currentScroll === totalScroll) {
+                    move.scrollTop = top - 1
+                }
+            })
         }
     </script>
 </body>
