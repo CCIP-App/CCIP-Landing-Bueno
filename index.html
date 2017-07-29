@@ -39,12 +39,12 @@
     </div>
     <script>
         function parameters() {
-            return location.search.split('?').pop().split('&').map(p => {
+            return location.search.split('?').pop().split('&').map(function(p) {
                 var ps = p.split('=');
                 var o = {};
                 o[ps.shift()] = ps.join('=');
                 return o;
-            }).reduce((a, b) => {
+            }).reduce(function(a, b) {
                 var o = a;
                 for (var k in b) {
                     o[k] = b[k];
