@@ -54,26 +54,26 @@
             });
         }
         window.onload = function () {
-            var appsrc = document.getElementById('appsrc');
+            // var appsrc = document.getElementById('appsrc');
             var goosrc = document.getElementById('goosrc');
-            var iosLogin = document.getElementById('iosLogin');
-            appsrc.setAttribute('href', 'https://itunes.apple.com/app/id' + document.querySelector('meta[name="apple-itunes-app"]').content.split(',').shift().trim().split('=').pop().trim());
+            // var iosLogin = document.getElementById('iosLogin');
+            // appsrc.setAttribute('href', 'https://itunes.apple.com/app/id' + document.querySelector('meta[name="apple-itunes-app"]').content.split(',').shift().trim().split('=').pop().trim());
             goosrc.setAttribute('href', 'https://play.google.com/store/apps/details?id=' + document.querySelector('meta[name="google-play-app"]').content.split('=').pop());
-            var mobile = {
-                iOS: navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false,
-                Android: navigator.userAgent.match(/Android/i) ? true : false
-            };
-            if (mobile.iOS) {
-                goosrc.style.display = 'none';
-                appsrc.classList.add('one');
-                if ((parameters().token || '').length != 0) {
-                    iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
-                    iosLogin.style.display = 'block';
-                }
-            } else if (mobile.Android) {
-                appsrc.style.display = 'none';
-                goosrc.classList.add('one');
-            }
+            // var mobile = {
+            //     iOS: navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false,
+            //     Android: navigator.userAgent.match(/Android/i) ? true : false
+            // };
+            // if (mobile.iOS) {
+            //     goosrc.style.display = 'none';
+            //     appsrc.classList.add('one');
+            //     if ((parameters().token || '').length != 0) {
+            //         iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
+            //         iosLogin.style.display = 'block';
+            //     }
+            // } else if (mobile.Android) {
+            //     appsrc.style.display = 'none';
+            //     goosrc.classList.add('one');
+            // }
 
             var move = document.getElementById('background-house-container');
             move.addEventListener('touchstart', function () {
