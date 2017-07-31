@@ -116,6 +116,15 @@ p{
     color: #3d983c;
 }
 
+#websrc{
+    display: block;
+    margin-top: 40px;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    color: #3d983c;
+}
+
 .subpage--banner {
   width: 100%;
   overflow: hidden
