@@ -25,8 +25,8 @@
         <div id="store">
             <a href="#" id="goosrc" class="one"></a>
             <!-- <a href="#" id="appsrc"></a> -->
-             <a href="#" id="iosLogin">安裝完 App 後，請此登入！</a> 
-            <a href="#" id="websrc">iOS 請使用 簡易 Web 版</a>
+             <a href="#" id="iosLogin">安裝完 App 後，點此登入！</a> 
+            <a href="#" id="websrc">iOS 與筆電，請使用 簡易 Web 版！</a>
         </div>
     </div>
     <div id="background-house-container">
@@ -64,21 +64,25 @@
             if ((parameters().token || '').length != 0) {
                 websrc.setAttribute('href', 'https://ccip-app.github.io/CCIP-Web-Bueno/?token=' + parameters().token);
             }
-            // var mobile = {
-            //     iOS: navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false,
-            //     Android: navigator.userAgent.match(/Android/i) ? true : false
-            // };
-            // if (mobile.iOS) {
+            var mobile = {
+                iOS: navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false,
+                Android: navigator.userAgent.match(/Android/i) ? true : false
+            };
+            if (mobile.iOS) {
             //     goosrc.style.display = 'none';
             //     appsrc.classList.add('one');
                 if ((parameters().token || '').length != 0) {
                     iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
                     iosLogin.style.display = 'block';
                 }
-            // } else if (mobile.Android) {
+            } else if (mobile.Android) {
             //     appsrc.style.display = 'none';
             //     goosrc.classList.add('one');
-            // }
+                if ((parameters().token || '').length != 0) {
+                    iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
+                    iosLogin.style.display = 'block';
+                }
+            }
 
             var move = document.getElementById('background-house-container');
             move.addEventListener('touchstart', function () {
