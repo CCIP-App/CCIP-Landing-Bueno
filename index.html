@@ -7,7 +7,7 @@
     <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!-- <meta name="apple-itunes-app" content="app-id=1128067951, app-argument=" /> -->
+    <meta name="apple-itunes-app" content="app-id=1128067951, app-argument=" /> 
     <meta name="google-play-app" content="app-id=org.coscup.ccip" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="manifest" href="" />
@@ -21,12 +21,11 @@
         <img id="icon" src="img/logo.png" />
         <div id="background"></div>
         <h1>COSCUP PASS</h1>
-        <p>下載應用程式後，即可登入使用。</p>
+        <p id='desc'>下載應用程式後，即可登入使用。</p>
         <div id="store">
-            <a href="#" id="goosrc" class="one"></a>
-            <!-- <a href="#" id="appsrc"></a> -->
-             <a href="#" id="iosLogin">安裝完 App 後，點此登入！</a> 
-            <a href="https://ccip-app.github.io/CCIP-Web-Bueno/" id="websrc">iOS 與筆電，請使用 簡易 Web 版！</a>
+            <a href="#" id="goosrc"></a><a href="#" id="appsrc"></a> 
+            <a href="#" id="iosLogin">安裝完 App 後，點此登入！</a> 
+            <a href="https://ccip-app.github.io/CCIP-Web-Bueno/" id="websrc">簡易 Web 版！</a>
         </div>
     </div>
     <div id="background-house-container">
@@ -55,11 +54,11 @@
             });
         }
         window.onload = function () {
-            // var appsrc = document.getElementById('appsrc');
+            var appsrc = document.getElementById('appsrc');
             var goosrc = document.getElementById('goosrc');
-            // var iosLogin = document.getElementById('iosLogin');
+            var iosLogin = document.getElementById('iosLogin');
             var websrc = document.getElementById('websrc');
-            // appsrc.setAttribute('href', 'https://itunes.apple.com/app/id' + document.querySelector('meta[name="apple-itunes-app"]').content.split(',').shift().trim().split('=').pop().trim());
+            appsrc.setAttribute('href', 'https://itunes.apple.com/app/id' + document.querySelector('meta[name="apple-itunes-app"]').content.split(',').shift().trim().split('=').pop().trim());
             goosrc.setAttribute('href', 'https://play.google.com/store/apps/details?id=' + document.querySelector('meta[name="google-play-app"]').content.split('=').pop());
             if ((parameters().token || '').length != 0) {
                 websrc.setAttribute('href', 'https://ccip-app.github.io/CCIP-Web-Bueno/?token=' + parameters().token);
@@ -69,15 +68,15 @@
                 Android: navigator.userAgent.match(/Android/i) ? true : false
             };
             if (mobile.iOS) {
-            //     goosrc.style.display = 'none';
-            //     appsrc.classList.add('one');
+                goosrc.style.display = 'none';
+                appsrc.classList.add('one');
                 if ((parameters().token || '').length != 0) {
                     iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
                     iosLogin.style.display = 'block';
                 }
             } else if (mobile.Android) {
-            //     appsrc.style.display = 'none';
-            //     goosrc.classList.add('one');
+                appsrc.style.display = 'none';
+                goosrc.classList.add('one');
                 if ((parameters().token || '').length != 0) {
                     iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
                     iosLogin.style.display = 'block';
@@ -95,10 +94,18 @@
                     move.scrollTop = top - 1
                 }
             })
+
+            var language = (navigator.language || navigator.browserLanguage).toLowerCase();
+            if (language != 'zh-tw') {
+                document.getElementById('desc').textContent = 'Download the app and use it for login.';
+                iosLogin.textContent = 'Click \'Login\' after you install the app.';
+                websrc.textContent = 'Simple Web app';
+            }
         }
 </script>
 <noscript>
-    <center>如有任何問題 請打開 Javascipt 和 關閉廣告攔截</center>
+    <center>如有任何問題 請打開 JavaScript 和 關閉廣告攔截</center>
+    <center>If any problem, please enable JavaScript and turn off any AD blocker.</center>
 </noscript>
 </body>
 
