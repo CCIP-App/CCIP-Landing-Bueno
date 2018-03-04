@@ -23,9 +23,9 @@
         <h1>SITCON PASS</h1>
         <p id='desc'>下載應用程式後，即可登入使用。</p>
         <div id="store">
-            <a href="#" id="goosrc"></a><a href="#" id="appsrc"></a> 
+            <a href="#" id="goosrc" class="one"></a><!-- <a href="#" id="appsrc"></a> -->
             <a href="#" id="iosLogin">安裝完 App 後，點此登入！</a> 
-            <a href="https://ccip-app.github.io/CCIP-Web-Bueno/" id="websrc">簡易 Web 版！</a>
+            <a href="https://ccip-app.github.io/CCIP-Web-Bueno/" id="websrc">Web App (PWA)</a>
         </div>
     </div>
     <div id="background-house-container">
@@ -54,28 +54,31 @@
             });
         }
         window.onload = function () {
-            var appsrc = document.getElementById('appsrc');
+            // var appsrc = document.getElementById('appsrc');
             var goosrc = document.getElementById('goosrc');
             var iosLogin = document.getElementById('iosLogin');
             var websrc = document.getElementById('websrc');
-            appsrc.setAttribute('href', 'https://itunes.apple.com/app/id' + document.querySelector('meta[name="apple-itunes-app"]').content.split(',').shift().trim().split('=').pop().trim());
+            // appsrc.setAttribute('href', 'https://itunes.apple.com/app/id' + document.querySelector('meta[name="apple-itunes-app"]').content.split(',').shift().trim().split('=').pop().trim());
             goosrc.setAttribute('href', 'https://play.google.com/store/apps/details?id=' + document.querySelector('meta[name="google-play-app"]').content.split('=').pop());
             if ((parameters().token || '').length != 0) {
                 websrc.setAttribute('href', 'https://ccip-app.github.io/CCIP-Web-Bueno/?token=' + parameters().token);
+                iosLogin.setAttribute('href', 'https://ccip-app.github.io/CCIP-Web-Bueno/?token=' + parameters().token);
             }
             var mobile = {
                 iOS: navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false,
                 Android: navigator.userAgent.match(/Android/i) ? true : false
             };
-            if (mobile.iOS) {
-                goosrc.style.display = 'none';
-                appsrc.classList.add('one');
-                if ((parameters().token || '').length != 0) {
-                    iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
+            // if (mobile.iOS) {
+                iosLogin.innerHTML = 'iOS 尚未上線，<br>請先使用 Web App 代替。'
+                // goosrc.style.display = 'none';
+                // appsrc.classList.add('one');
+                // if ((parameters().token || '').length != 0) {
+                    // iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
                     iosLogin.style.display = 'block';
-                }
-            } else if (mobile.Android) {
-                appsrc.style.display = 'none';
+                // }
+            // } else 
+            if (mobile.Android) {
+                // appsrc.style.display = 'none';
                 goosrc.classList.add('one');
                 if ((parameters().token || '').length != 0) {
                     iosLogin.setAttribute('href', 'ccip://login/?token=' + parameters().token);
@@ -83,17 +86,17 @@
                 }
             }
 
-            var move = document.getElementById('background-house-container');
-            move.addEventListener('touchstart', function () {
-                var top = move.scrollTop
-                var totalScroll = move.scrollHeight
-                var currentScroll = top + move.offsetHeight
-                if (top === 0) {
-                    move.scrollTop = 1
-                } else if (currentScroll === totalScroll) {
-                    move.scrollTop = top - 1
-                }
-            })
+            // var move = document.getElementById('background-house-container');
+            // move.addEventListener('touchstart', function () {
+            //     var top = move.scrollTop
+            //     var totalScroll = move.scrollHeight
+            //     var currentScroll = top + move.offsetHeight
+            //     if (top === 0) {
+            //         move.scrollTop = 1
+            //     } else if (currentScroll === totalScroll) {
+            //         move.scrollTop = top - 1
+            //     }
+            // })
 
             var language = (navigator.languages[0] || navigator.language || navigator.browserLanguage).toLowerCase();
             if (language != 'zh-tw') {
