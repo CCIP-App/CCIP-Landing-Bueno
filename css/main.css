@@ -29,7 +29,8 @@ body {
     position: relative;
     top: -40px;
     
-    width: 350px;
+    width: 90vw;
+    max-width: 350px;
     height: 237px;
     background: #fff;
     opacity: .82;
