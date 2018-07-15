@@ -103,6 +103,30 @@
                 // iosLogin.textContent = 'Click \'Login\' after you install the app.';
                 // websrc.textContent = 'Simple Web app';
             }
+
+            var rotateBg = document.querySelector("#background-coscup")
+            var deg = 150;
+            var step = 1;
+            var transform = 'translateY(-132px)';
+            setInterval(function(){
+                rotateBg.style.transform = transform + ' rotate(' + deg + 'deg)';
+                deg += step
+                console.log(deg)
+            }, 100);
+
+            var incrStep = function(){
+                step+=10;
+            }
+            var uncrStep = function(){
+                step-=10;
+            }
+
+            document.onkeydown = function (event) {
+                console.log(event.which)
+                if (event.which == 39) incrStep()
+                else if (event.which == 37) uncrStep()
+            }
+
         }
 </script>
 <noscript>
