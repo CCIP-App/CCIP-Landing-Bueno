@@ -60,6 +60,8 @@ p{
     text-align: center;
 }
 #store{
+    filter: grayscale(100%);
+    opacity: 0.5;
     color: rgb(74, 74, 74);
     padding: 10px;
     box-sizing: border-box;
@@ -76,6 +78,8 @@ p{
     background-position: center;
     margin: 0px;
     /* margin-left: 0.5%; */
+
+    cursor: not-allowed;
 }
 #goosrc.one{
     width: 100%;
@@ -91,6 +95,8 @@ p{
     background-position: center;
     margin: 0px;
     /* margin-right: 0.5%; */
+
+    cursor: not-allowed;
 }
 #appsrc.one{
     width: 100%;
